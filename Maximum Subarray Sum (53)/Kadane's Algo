@@ -1,0 +1,18 @@
+int maxSubArray(vector<int>& nums) {
+        
+        // KADANE'S Algorithm Soln - Must contain atleast one positive number therefore doesnot satisfy test case when all elements are negative in array
+        
+         if(nums.size()==1){
+             return nums[0];
+         }
+         int cs = 0;
+         int ms = 0;
+         for(auto it = nums.begin();it<nums.end();it++){
+             cs += *(it);
+             if(cs<0){
+                 cs = 0;
+             }
+             ms = max(ms,cs);
+         }
+         return ms;
+    }
