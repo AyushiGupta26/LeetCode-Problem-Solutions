@@ -1,0 +1,11 @@
+  // To handle array only containing negative numbers
+  
+  int maxSubArray(vector<int>& nums) {
+        int cs = nums[0];
+        int ms = nums[0];
+        for(auto it = nums.begin()+1;it<nums.end();it++){
+            cs = max(*(it) + cs, *(it));
+            ms = max(ms,cs);
+        }
+        return ms;
+    }
