@@ -1,0 +1,30 @@
+  int trap(vector<int>& height) {
+        if(height.size()<1){
+            return 0;
+        }
+        int sum = 0;
+        int current;
+        for(int i=1;i<height.size()-1;i++){
+            current = min(leftTallest(i-1,height),rightTallest(i+1,height)) - height[i];
+            if(current >= 0){
+                sum += current;
+            }
+        }
+        return sum;
+    }
+    int leftTallest(int i, vector<int>& height){
+        int tall = height[0];
+        while(i>=0){
+            tall = max(height[i],tall);
+            i--;
+        }
+        return tall;
+    }
+    int rightTallest(int i, vector<int>& height){
+        int tall = height[height.size()-1];
+        while(i<height.size()){
+            tall = max(height[i],tall);
+            i++;
+        }
+        return tall;
+    }
