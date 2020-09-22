@@ -1,0 +1,20 @@
+// Works for both the cases i.e.
+// 1) (74) Integers in each row are sorted from left to right. The first integer of each row is greater than the last integer of the previous row.
+// 2) (240) Integers in each row are sorted in ascending from left to right. Integers in each column are sorted in ascending from top to bottom.
+
+  bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        if(matrix.size() < 1){
+            return false;
+        }
+        int i = 0, j = matrix[0].size()-1;
+        while(i < matrix.size() && j >= 0){
+            if(matrix[i][j] < target){
+                i++;
+            }else if(matrix[i][j] > target){
+                j--;
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
