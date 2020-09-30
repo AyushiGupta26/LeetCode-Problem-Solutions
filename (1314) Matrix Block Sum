@@ -1,0 +1,25 @@
+// Given a n * m matrix mat and an integer K, return a matrix answer where 
+// each answer[i][j] is the sum of all elements mat[r][c] for i-K <= r <= i+K, j-K <= c <= j+K, and (r, c) is a valid position in the matrix.
+
+  vector<vector<int>> matrixBlockSum(vector<vector<int>>& mat, int K) {
+        int n = mat.size();
+        int m = mat[0].size();
+        int i,j,r,c;
+        
+        vector<vector <int>> answer(n, vector<int>(m));
+        int sum;
+        for(i=0;i<n;i++){
+            for(j=0;j<m;j++){
+                sum=0;
+                for(r=i-K;r<=i+K;r++){
+                    for(c=j-K;c<=j+K;c++){
+                        if(r>=0 and r<n && c>=0 && c<m){
+                            sum += mat[r][c];
+                        }
+                    }
+                }
+                answer[i][j] = sum;
+            }
+        }
+        return answer;
+    }
