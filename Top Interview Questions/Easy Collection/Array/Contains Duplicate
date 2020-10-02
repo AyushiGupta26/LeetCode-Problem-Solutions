@@ -1,0 +1,32 @@
+// 3 Methods
+// METHOD - 1
+// METHOD - 2 - Convert the array into Set since Set doesn’t allow duplicates. Size of the Set will be smaller than the original Array if Array contains duplicates.
+
+  bool containsDuplicate(vector<int>& nums) {
+        int n = nums.size();
+        if(n<=1){
+            return false;
+        }
+        
+        // METHOD - 1        
+        int i=0,j=1;
+        sort(nums.begin(),nums.end());
+        while(j<n){
+            if(nums[i]==nums[j]){
+                return true;
+            }else{
+                i++;
+            }
+            j++;
+        }
+        return false;
+        
+        // METHOD - 2       
+        set<int> s(nums.begin(), nums.end()); 
+        if(nums.size() > s.size()){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
