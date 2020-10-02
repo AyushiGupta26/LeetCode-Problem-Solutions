@@ -1,6 +1,7 @@
 // 3 Methods
 // METHOD - 1
 // METHOD - 2 - Convert the array into Set since Set doesn’t allow duplicates. Size of the Set will be smaller than the original Array if Array contains duplicates.
+// METHOD - 3 - Adding every element of the array into Set. insert(Value) method of Set returns a pair with its member pair::first equal to an iterator pointing to either the newly inserted element or to the equivalent element already in the set. The pair::second element is equal to true if a new element was inserted or false if an equivalent element already existed.
 
   bool containsDuplicate(vector<int>& nums) {
         int n = nums.size();
@@ -29,4 +30,12 @@
             return false;
         }
         
+        // METHOD - 3        
+        set<int> s;
+        for(int i=0;i<nums.size();i++){
+            if(!s.insert(nums[i]).second){
+                return true;
+            }
+        }
+        return false;
     }
